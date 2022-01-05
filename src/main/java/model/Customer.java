@@ -3,8 +3,8 @@ package model;
 import java.sql.Date;
 
 public class Customer {
-    private int id;
-    private int id_role;
+    private long id;
+    private long id_role;
     private String name_role;
     private String full_name;
     private String passwords;
@@ -32,7 +32,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, int id_role, String name_role, String full_name, String passwords, String email, String phone, String address, String img, Date create_date, Date modify_date, String status) {
+    public Customer(long id, long id_role, String name_role, String full_name, String passwords, String email, String phone, String address, String img, Date create_date, Date modify_date, String status) {
         this.id = id;
         this.id_role = id_role;
         this.name_role = name_role;
@@ -47,7 +47,7 @@ public class Customer {
         this.status = status;
     }
 
-    public Customer(int id_role, String name_role, String full_name, String passwords, String email, String phone, String address, String img, String status) {
+    public Customer(long id_role, String name_role, String full_name, String passwords, String email, String phone, String address, String img, String status) {
         this.id_role = id_role;
         this.name_role = name_role;
         this.full_name = full_name;
@@ -59,19 +59,28 @@ public class Customer {
         this.status = status;
     }
 
-    public int getId() {
+    public Customer(String full_name, String passwords, String email, String phone, String address, String img) {
+        this.full_name = full_name;
+        this.passwords = passwords;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.img = img;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getId_role() {
+    public long getId_role() {
         return id_role;
     }
 
-    public void setId_role(int id_role) {
+    public void setId_role(long id_role) {
         this.id_role = id_role;
     }
 

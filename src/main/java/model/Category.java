@@ -1,7 +1,7 @@
 package model;
 
 public class Category {
-    private int id;
+    private long id;
     private String name;
     private String code;
     private String description;
@@ -12,14 +12,21 @@ public class Category {
         this.description = description;
     }
 
+    public Category(long id, String name, String code, String description) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.description = description;
+    }
+
     public Category() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

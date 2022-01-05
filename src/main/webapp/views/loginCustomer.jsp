@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Printd T-Shirt - RedStore</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,19 +17,19 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html"><img src="images/logo.png" width="125px"></a>
+                <a href="../index.html"><img src="../images/logo.png" width="125px"></a>
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../products.html">Products</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Contact</a></li>
-                    <li><a href="login.jsp">Account</a></li>
+                    <li><a href="loginCustomer.jsp">Account</a></li>
                 </ul>
             </nav>
-            <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
-            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            <a href="../cart.html"><img src="../images/cart.png" width="30px" height="30px"></a>
+            <img src="../images/menu.png" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
     <!-- ------------Account-page------------------- -->
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <img src="images/image1.png" width="100%">
+                    <img src="../images/image1.png" width="100%">
                 </div>
 
                 <div class="col-2   ">
@@ -56,10 +56,14 @@
                             <a href="">Forgot password</a>
                         </form>
 
-                        <form id="RegForm">
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                        <form  id="RegForm" action="/customer" method="post">
+                            <input type="hidden" name="action" value="register">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="passwords" placeholder="Password">
+                            <input type="text" name="full_name" placeholder="full_name">
+                            <input type="text" name="phone" placeholder="Password">
+                            <input type="text" name="address" placeholder="Password">
+                            <input type="text" name="img" placeholder="img">
                             <button type="submit" class="btn">Register</button>
                         </form>
 
@@ -77,12 +81,12 @@
                     <h3>Download Our App</h3>
                     <p>Download App for Android and ios mobile phone</p>
                     <div class="app-logo">
-                        <img src="images/play-store.png">
-                        <img src="images/app-store.png">
+                        <img src="../images/play-store.png">
+                        <img src="../images/app-store.png">
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/logo-white.png">
+                    <img src="../images/logo-white.png">
                     <p>Our Purpose Is To Sustainably Make the Pleasure and
                         Benefits of Sports Accessible to the Many</p>
                 </div>

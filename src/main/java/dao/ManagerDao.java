@@ -7,17 +7,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManagerDao {
+public class ManagerDao implements IDao<Manager>{
     Connection connection = ConnectionJDBC.getConnection();
 
-    public List<Manager> getListManager() {
+    public List<Manager> getList() {
         String showManager = "select manager.*,role.name from manager join role on manager.id_role = role.id";
         List<Manager> managerList = new ArrayList<>();
         try (
              PreparedStatement preparedStatement = connection.prepareStatement(showManager)) {
                 ResultSet rs = preparedStatement.executeQuery();
                 while (rs.next()) {
-                int id = rs.getInt("id");
+                long id = rs.getLong("id");
                 String user_name = rs.getString("user_name");
                 String passwords = rs.getString("passwords");
                 String full_name = rs.getString("full_name");
@@ -41,7 +41,7 @@ public class ManagerDao {
 
         return null;
     }
-    public void createManagerDao(Manager manager) {
+    public void insert(Manager manager) {
         String saveManager = "INSERT INTO manager (full_name,passwords,email,phone,address,id_role,img,salary,coefficients_salary,status,create_date,modify_date) VALUES (?,?,?,?,?,?,?,?,?)";
 
         try {
@@ -51,7 +51,7 @@ public class ManagerDao {
             preparedStatement.setString(3, manager.getEmail());
             preparedStatement.setString(4, manager.getPhone());
             preparedStatement.setString(5, manager.getAddress());
-            preparedStatement.setInt(6, manager.getId_role());
+            preparedStatement.setLong(6, manager.getId_role());
             preparedStatement.setString(7, manager.getImg());
             preparedStatement.setDouble(8, manager.getSalary());
             preparedStatement.setString(9, manager.getStatus());
@@ -61,11 +61,11 @@ public class ManagerDao {
         }
     }
 
-    public void deleteManagerDao(int id) {
+    public void delete(long id) {
         String deleteSQL = "DELETE  from manager where id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setLong(1, id);
             preparedStatement.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class ManagerDao {
     }
 
 
-    public void updateManager(int id, Manager manager) {
+    public void update(long id, Manager manager) {
         String editManager = "update manager set full_name = ? ,passwords = ? ,email = ?,phone = ?,address = ? ,id_role = ?,img = ? ,salary = ?,coefficients_salary = ? where id = ?";
 
         try (
@@ -83,7 +83,7 @@ public class ManagerDao {
             statement.setString(3, manager.getEmail());
             statement.setString(4, manager.getPhone());
             statement.setString(5, manager.getAddress());
-            statement.setInt(6, manager.getId_role());
+            statement.setLong(6, manager.getId_role());
             statement.setString(7, manager.getImg());
             statement.setDouble(8, manager.getSalary());
             statement.setDouble(9, manager.getCoefficients_salary());
@@ -97,8 +97,6 @@ public class ManagerDao {
     public List<Manager> searchByName(String findname) {
         String getall = "select manager.* from manager" +
                 "  where manager.full_name like '%" + findname + "%\'";
-
-
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(getall);

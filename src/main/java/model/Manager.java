@@ -4,8 +4,8 @@ import javax.xml.crypto.Data;
 import java.sql.Date;
 
 public class Manager {
-    private int id;
-    private int id_role;
+    private long id;
+    private long id_role;
     private String user_name;
     private String passwords;
     private String full_name;
@@ -20,7 +20,7 @@ public class Manager {
     private Date modify_date;
     private String name_role;
 
-    public Manager( int id_role, String user_name, String passwords, String full_name, String email, String phone, String address, String img, double salary, double coefficients_salary, String status, Date create_date, Date modify_date, String name_role) {
+    public Manager( long id_role, String user_name, String passwords, String full_name, String email, String phone, String address, String img, double salary, double coefficients_salary, String status, Date create_date, Date modify_date, String name_role) {
         this.id_role = id_role;
         this.user_name = user_name;
         this.passwords = passwords;
@@ -38,7 +38,7 @@ public class Manager {
     }
 
 
-    public Manager(int id_role, String user_name, String passwords, String email, String phone, String address, String img, Double salary, Double coefficients_salary, String status, Date create_date, Date modify_date) {
+    public Manager(long id_role, String user_name, String passwords, String email, String phone, String address, String img, Double salary, Double coefficients_salary, String status, Date create_date, Date modify_date) {
         this.id_role = id_role;
         this.user_name = user_name;
         this.passwords = passwords;
@@ -53,7 +53,7 @@ public class Manager {
         this.modify_date = modify_date;
     }
 
-    public Manager(int id, int id_role, String user_name, String passwords, String email, String phone, String address, String img, Double salary, Double coefficients_salary, String status, Date create_date, Date modify_date) {
+    public Manager(long id, int id_role, String user_name, String passwords, String email, String phone, String address, String img, Double salary, Double coefficients_salary, String status, Date create_date, Date modify_date) {
         this.id = id;
         this.id_role = id_role;
         this.user_name = user_name;
@@ -69,19 +69,19 @@ public class Manager {
         this.modify_date = modify_date;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getId_role() {
+    public long getId_role() {
         return id_role;
     }
 
-    public void setId_role(int id_role) {
+    public void setId_role(long id_role) {
         this.id_role = id_role;
     }
 

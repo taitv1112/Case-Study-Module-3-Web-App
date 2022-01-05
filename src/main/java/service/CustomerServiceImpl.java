@@ -19,13 +19,13 @@ public class CustomerServiceImpl implements IService<Customer>{
     }
 
     @Override
-    public void update(int id, Customer customer) {
+    public void update(long id, Customer customer) {
         customerDao.update(id,customer);
         getList();
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         customerDao.delete(id);
         getList();
     }

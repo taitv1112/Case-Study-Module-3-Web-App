@@ -1,7 +1,7 @@
 package model;
 
 public class Supplier {
-    private int id;
+    private long id;
     private String name;
     private String description;
 
@@ -10,14 +10,20 @@ public class Supplier {
         this.description = description;
     }
 
+    public Supplier(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     public Supplier() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

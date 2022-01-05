@@ -17,7 +17,7 @@ public class CustomerDao implements IDao<Customer>{
              PreparedStatement preparedStatement = connection.prepareStatement(ShowCustomer)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id");
+                long id = rs.getLong("id");
                 int id_role = rs.getInt("id_role");
                 String name_role = rs.getString("name");
                 String full_name = rs.getString("full_name");
@@ -40,7 +40,7 @@ public class CustomerDao implements IDao<Customer>{
     }
     @Override
     public void insert(Customer customer) {
-        String insertCustomer = "INSERT INTO customer (full_name,passwords,email,phone,address,id_role,img) VALUES (?,?,?,?,?,?,?)";
+        String insertCustomer = "INSERT INTO customer (full_name,passwords,email,phone,address,img) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertCustomer);
             preparedStatement.setString(1, customer.getFull_name());
@@ -48,26 +48,25 @@ public class CustomerDao implements IDao<Customer>{
             preparedStatement.setString(3, customer.getEmail());
             preparedStatement.setString(4, customer.getPhone());
             preparedStatement.setString(5, customer.getAddress());
-            preparedStatement.setInt(6, customer.getId_role());
-            preparedStatement.setString(7, customer.getImg());
+            preparedStatement.setString(6, customer.getImg());
             preparedStatement.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         String deleteSQL = "DELETE  from customer where id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setLong(1, id);
             preparedStatement.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     @Override
-    public void update(int id, Customer customer) {
+    public void update(long id, Customer customer) {
         String editCustomer = "update customer set full_name = ? ,passwords = ? ,email = ?,phone = ?,address = ? ,id_role = ?,img = ? ,status = ? where id = ?";
 
         try (
@@ -77,10 +76,10 @@ public class CustomerDao implements IDao<Customer>{
             statement.setString(3, customer.getEmail());
             statement.setString(4, customer.getPhone());
             statement.setString(5, customer.getAddress());
-            statement.setInt(6, customer.getId_role());
+            statement.setLong(6, customer.getId_role());
             statement.setString(7, customer.getImg());
             statement.setString(8,customer.getStatus());
-            statement.setInt(9,id);
+            statement.setLong(9,id);
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,8 +93,8 @@ public class CustomerDao implements IDao<Customer>{
             ResultSet rs = statement.executeQuery(getall);
             List<Customer> customerList = new ArrayList<>();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                int id_role = rs.getInt("id_role");
+                long id = rs.getLong("id");
+                long id_role = rs.getLong("id_role");
                 String name_role = rs.getString("name");
                 String full_name = rs.getString("full_name");
                 String passwords = rs.getString("passwords");

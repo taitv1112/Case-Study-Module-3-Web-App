@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/customer")
@@ -29,12 +30,13 @@ public class CustomerServlet extends HttpServlet {
                 request.setAttribute("customer", customerList);
                 request.getRequestDispatcher("createCustomer.jsp").forward(request, response);
                 break;
-            default:response.sendRedirect("/login.jsp");
+
 //            case "edit":
 //                customerList = customerService.getList();
 //                request.setAttribute("customer", customerList);
 //                request.getRequestDispatcher("editCustomer.jsp").forward(request, response);
 //                break;
+//
 //            case "delete":
 //                try {
 //                    deleteCustomer(request, response);
@@ -44,13 +46,14 @@ public class CustomerServlet extends HttpServlet {
 //                break;
 //            default:
 //                showList(request, response);
+            default:response.sendRedirect("/views/loginCustomer.jsp");
         }
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(" in post ");
+
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -59,16 +62,25 @@ public class CustomerServlet extends HttpServlet {
             case "login":
                 String user = request.getParameter("userName");
                 String password = request.getParameter("password");
-                System.out.println("di den day");
                 Customer customer = customerService.checkLoginCustomer(user,password);
                 if(customer == null){
-                    response.sendRedirect("/login.jsp");
+                    response.sendRedirect("/loginCustomer.jsp");
                 }else {
                     System.out.println("Login success ");
                     request.getRequestDispatcher("/home.jsp").forward(request,response);
                 }
                 break;
-            default: response.sendRedirect("/cart.html");
+            case "register":
+                String email = request.getParameter("email");
+                String address = request.getParameter("address");
+                String phone = request.getParameter("phone");
+                String passwords = request.getParameter("passwords");
+                String full_name = request.getParameter("full_name");
+                String img = request.getParameter("img");
+                customerService.save(new Customer( full_name,  passwords,  email,  phone,  address,  img));
+                response.sendRedirect("/views/home.jsp");
+                break;
+            default: response.sendRedirect("/views/cart.html");
         }
     }
 }
