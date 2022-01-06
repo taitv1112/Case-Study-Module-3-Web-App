@@ -80,7 +80,7 @@ public class CustomerServlet extends HttpServlet {
                 customerService.save(new Customer( full_name,  passwords,  email,  phone,  address,  img));
                 response.sendRedirect("/views/home.jsp");
                 break;
-            default: response.sendRedirect("/views/cart.html");
+            default: response.sendRedirect("/views/cart.jsp");
         }
     }
 }

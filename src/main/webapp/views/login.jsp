@@ -27,7 +27,7 @@
     <div>
       <nav class="navbar navbar-expand-xl">
         <div class="container h-100">
-          <a class="navbar-brand" href="homeadmin.jsp">
+          <a class="navbar-brand" href="homeAdmin.jsp">
             <h1 class="tm-site-title mb-0">Product Admin</h1>
           </a>
           <button
@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
               <li class="nav-item">
-                <a class="nav-link" href="homeadmin.jsp">
+                <a class="nav-link" href="homeAdmin.jsp">
                   <i class="fas fa-tachometer-alt"></i> Dashboard
                   <span class="sr-only">(current)</span>
                 </a>
@@ -70,13 +70,13 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="products.html">
+                <a class="nav-link" href="products.jsp">
                   <i class="fas fa-shopping-cart"></i> Products
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="account.html">
+                <a class="nav-link" href="account.jsp">
                   <i class="far fa-user"></i> Accounts
                 </a>
               </li>

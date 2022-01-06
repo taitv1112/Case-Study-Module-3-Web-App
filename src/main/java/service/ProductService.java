@@ -31,4 +31,12 @@ public class ProductService implements IService<Product> {
         productDao.delete(id);
         getList();
     }
+    public Product getProductByName(String name) throws SQLException {
+        for (int i = 0; i < productDao.getList().size(); i++) {
+            if(name.equals(productDao.getList().get(i).getName())){
+                return productDao.getList().get(i);
+            }
+        }
+        return null;
+    }
 }
